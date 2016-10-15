@@ -15,6 +15,7 @@ hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML,
        'Connection': 'keep-alive'}
 url = pyperclip.paste()
 warning = 3
+options = 1
 while warning > 0:
     if(validators.url(url)):
         r = requests.get(url, hdr)
@@ -49,24 +50,33 @@ while warning > 0:
         for p in content:
             Qt += p.getText()
             Qt = str(Qt.encode('utf-8'))
-        choice = input("if you want to listen to the article press 1 or for text press 2 ")
+        choice = input("if you want to listen to the article press 1 or for text press 2:  ")
         if(choice == 1):
             print("It will take sometime please wait")
             tt = gTTS(text=Qt + " article was published on " + website, lang="en")
             tt.save("News.mp3")
             print("Done!")
             webbrowser.open("News.mp3")
-
+            options = input("Press 1 to contiue or press 2 to exit: ")
+            if options == 1:
+                url = raw_input("Please provide another URL: ")
+            else:
+                warning = 0
         else:
             txt_file = open("News.txt", "w")
             txt_file.write(Qt)
             webbrowser.open("News.txt")
             print("Done!")
             txt_file.close()
+            options = input("Press 1 to contiue or press 2 to exit: ")
+            if options == 1:
+                url = raw_input("Please provide another URL: ")
+            else:
+                warning = 0
     else:
         print("You have " + str(warning) + " try left ")
         url = raw_input("Please provide a valid url:  ")
         warning -= 1
 
 if warning == 0:
-    print("Please restart the program")
+    print("Thanks for using SimpleNews")
