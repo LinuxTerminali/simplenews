@@ -13,6 +13,8 @@ These Websites are currently Supported by SimpleNews
 
 5) Reuters India
 
+6) Livemint
+
 Run SimpleNews.sh in your terminal after copying link from above listed websites and then follow the display text.
 Tested on LinuxMint 18. Feel free to Test on other platform and submit issues.   
 
