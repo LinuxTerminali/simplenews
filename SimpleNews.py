@@ -13,7 +13,12 @@ hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML,
        'Accept-Encoding': 'none',
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'}
-url = pyperclip.paste()
+print("#==Welcome to SimpleNews==#")
+try:
+    url = pyperclip.paste()
+except:
+    print("Unable to read text from your clipborad !! ")
+    url = input("Please Provide a url: ")
 warning = 3
 options = 1
 while warning > 0:
@@ -44,6 +49,11 @@ while warning > 0:
             print("Your article is from "+website)
         elif Counter(website) == Counter("Reuters India"):
             content = soup.find_all("span", {"id": "article-text"})
+            print("Your article is from "+website)
+        else:
+            print('#======Support for this website is coming soon, You may not'
+                  ' get desired result======#')
+            content = soup.find_all('p')
             print("Your article is from "+website)
 
         Qt = " "
